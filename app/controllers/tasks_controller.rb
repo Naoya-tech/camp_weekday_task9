@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
+#リファクタリングの追加
+before_action :set_task, only: [ :show, :edit, :update, :destroy]
+
   def index
     @tasks = Task.all.order(created_at: "desc").limit(5)
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def new
@@ -12,7 +14,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
   end
 
   def create
@@ -26,7 +27,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
       flash[:notice] = "タスクを更新しました。"
       redirect_to @task
@@ -36,7 +36,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
     @task.delete
     redirect_to tasks_path
   end
@@ -51,6 +50,10 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :memo, :status, :is_display)
   end
 
+  #リファクタリングの追加
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
 
 end

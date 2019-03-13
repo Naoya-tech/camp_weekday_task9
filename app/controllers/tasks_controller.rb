@@ -1,13 +1,5 @@
 class TasksController < ApplicationController
   def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
-  def edit
+    @tasks = Task.all.order(created_at: "desc").limit(5)
   end
 end

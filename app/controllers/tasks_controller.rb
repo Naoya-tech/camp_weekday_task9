@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 before_action :set_task, only: [ :show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all.order(created_at: "desc").limit(5)
+    @tasks = Task.order(created_at: "desc").limit(5)
   end
 
   def show
@@ -47,7 +47,7 @@ before_action :set_task, only: [ :show, :edit, :update, :destroy]
   private
 
   def task_params # ストロングパラメータを定義する
-    params.require(:task).permit(:title, :memo, :status, :is_display)
+    params.require(:task).permit(:title, :memo, :status)
   end
 
   #リファクタリングの追加

@@ -1,0 +1,14 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.red, .draft{
+  color: #FF0000;
+}
+
+.blue, .published{
+  color: #0000FF;
+}
+
+.archieved{
+  color: #008000;
+}

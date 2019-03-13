@@ -34,7 +34,17 @@ class TasksController < ApplicationController
       render "edit"
     end
   end
-  
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.delete
+    redirect_to tasks_path
+  end
+
+  def hide
+    @tasks = Task.all
+  end
+
   private
 
   def task_params # ストロングパラメータを定義する

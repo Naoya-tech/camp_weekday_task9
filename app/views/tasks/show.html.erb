@@ -1,0 +1,8 @@
+<p class="blue"><%= flash[:notice] %></p>
+<p>タイトル: <%= @task.title %></p>
+<p>メモ: <%= @task.memo %></p>
+<p>状態:<%= @task.status %></p>
+<p>登録日: <%= @task.created_at.strftime('%Y年%m月%d日') %></p>
+<%= link_to "一覧", tasks_path %>
+<%= link_to "編集", edit_task_path %>
+<%= link_to "削除", task_path(@task), method: :delete, data: {confirm: '削除してよろしいですか？'} %>
